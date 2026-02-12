@@ -1,12 +1,13 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "@prisma/client"
+  provider        = "prisma-client"
+  output          = "./generated/prisma"
   previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
 }
+
 model Product {
   id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name        String
@@ -23,4 +24,3 @@ model Product {
   banner      String?
   createdAt   DateTime @default(now()) @db.Timestamp(6)
 }
-
