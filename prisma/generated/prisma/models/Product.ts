@@ -389,7 +389,7 @@ export type ProductCreateInput = {
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string
   numReviews?: number
-  isFeatured: boolean
+  isFeatured?: boolean
   banner?: string | null
   createdAt?: Date | string
 }
@@ -406,7 +406,7 @@ export type ProductUncheckedCreateInput = {
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string
   numReviews?: number
-  isFeatured: boolean
+  isFeatured?: boolean
   banner?: string | null
   createdAt?: Date | string
 }
@@ -457,7 +457,7 @@ export type ProductCreateManyInput = {
   price?: runtime.Decimal | runtime.DecimalJsLike | number | string
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string
   numReviews?: number
-  isFeatured: boolean
+  isFeatured?: boolean
   banner?: string | null
   createdAt?: Date | string
 }

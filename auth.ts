@@ -3,6 +3,8 @@ import NextAuth, { NextAuthConfig } from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/db/prisma";
 import { compareSync } from "bcrypt-ts-edge";
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 
 export const config = {
   pages: {
@@ -82,6 +84,9 @@ export const config = {
         }
       }
       return token;
+    },
+    authorized({ auth, request }) {
+      return true;
     },
   },
 } satisfies NextAuthConfig;
