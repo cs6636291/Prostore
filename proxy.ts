@@ -2,6 +2,23 @@ import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 
 export const proxy = auth((req) => {
+  //Array of regexpatterns of paths we want to protect
+  const protectedPaths = [
+    /\/shipping-address/,
+    /\/payment-method/,
+    /\/place-order/,
+    /\/profile/,
+    /\/user\/(.*)/,
+    /\/order\/(.*)/,
+    /\/admin/,
+  ];
+  // Get pathname from the req URL object
+  const { pathname } = req.nextUrl;
+
+  // Check if user is not authenticated and accessing a protected path
+  if (!req.auth && protectedPaths.some((p) => p.test(pathname)))
+    return Response.redirect(new URL("/sign-in", req.url));
+
   // 1. ตรวจสอบว่ามี sessionCartId หรือยัง
   const hasCartId = req.cookies.has("sessionCartId");
 
